@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import work from "../img/briefcase.png";
 
 class WorkInfo extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
   render() {
+    const { workInfo1, workInfo2 } = this.props;
     return (
       <div className="work-info">
         <div className="work-title-area">
@@ -14,25 +15,19 @@ class WorkInfo extends Component {
         </div>
         <div className="work-content">
           <div className="work-1">
-            <div className="work-year-column">2005 - 2010</div>
+            <div className="work-year-column">{workInfo1[0]}</div>
             <div className="work-info-column">
-              <h4>Edit Old Hollywood Films</h4>
-              <p>Old Hollywood Studio</p>
-              <p>
-                lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem
-                lorem lorem lorem lorem lorem lorem
-              </p>
+              <h4>{workInfo1[1]}</h4>
+              <p>{workInfo1[2]}</p>
+              <p>{workInfo1[3]}</p>
             </div>
           </div>
           <div className="work-2">
-            <div className="work-year-column">1995 - 2005</div>
+            <div className="work-year-column">{workInfo2[0]}</div>
             <div className="work-info-column">
-              <h4>Cut Blockbusters</h4>
-              <p>Hidden Gem Studios</p>
-              <p>
-                lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem
-                lorem lorem lorem lorem lorem lorem
-              </p>
+              <h4>{workInfo2[1]}</h4>
+              <p>{workInfo2[2]}</p>
+              <p>{workInfo2[3]}</p>
             </div>
           </div>
         </div>

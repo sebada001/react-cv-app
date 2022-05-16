@@ -1,32 +1,33 @@
 import React, { Component } from "react";
 
 class PersonalInfo extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
   render() {
+    const { toInsert, personalInfo } = this.props;
     return (
       <div className="personal-info">
-        <h1 className="name">John Ramon</h1>
-        <h2 className="job-title">Film editor</h2>
+        <h1 className="name">{personalInfo[0]}</h1>
+        <h2 className="job-title">{personalInfo[1]}</h2>
         <div className="personal-info-group">
           <div className="address">
             <strong>Adress</strong>
-            <p>Corner of highway street 3rd avenue</p>
+            <p>{personalInfo[2]}</p>
           </div>
           <div className="linkedin">
             <strong>LinkedIn</strong>
             <p>
-              <a>linkedin.com/in/wataba</a>
+              <a>{personalInfo[3]}</a>
             </p>
           </div>
           <div className="phone">
             <strong>Phone</strong>
-            <p>857 317 3716</p>
+            <p>{personalInfo[4]}</p>
           </div>
           <div className="email">
             <strong>E-mail</strong>
-            <p>examplesample@sampler.com</p>
+            <p>{personalInfo[5]}</p>
           </div>
         </div>
       </div>

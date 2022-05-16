@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import school from "../img/school.png";
 
 class EducationInfo extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
   render() {
+    const { educationInfo1, educationInfo2 } = this.props;
     return (
       <div className="education-info">
         <div className="education-title-area">
@@ -14,25 +15,19 @@ class EducationInfo extends Component {
         </div>
         <div className="education-content">
           <div className="education-1">
-            <div className="education-year-column">1990 - 1995</div>
+            <div className="education-year-column">{educationInfo1[0]}</div>
             <div className="education-info-column">
-              <h4>Master's in Film Cutting</h4>
-              <p>School of Orlando</p>
-              <p>
-                lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem
-                lorem lorem lorem lorem lorem lorem
-              </p>
+              <h4>{educationInfo1[1]}</h4>
+              <p>{educationInfo1[2]}</p>
+              <p>{educationInfo1[3]}</p>
             </div>
           </div>
           <div className="education-2">
-            <div className="education-year-column">1985 - 1990</div>
+            <div className="education-year-column">{educationInfo2[0]}</div>
             <div className="education-info-column">
-              <h4>Bachelor's in Videography</h4>
-              <p>School of New York</p>
-              <p>
-                lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem
-                lorem lorem lorem lorem lorem lorem
-              </p>
+              <h4>{educationInfo2[1]}</h4>
+              <p>{educationInfo2[2]}</p>
+              <p>{educationInfo2[3]}</p>
             </div>
           </div>
         </div>
