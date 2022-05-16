@@ -3,11 +3,12 @@ import React, { Component } from "react";
 import PersonalInfo from "./components/PersonalInfo";
 import EducationInfo from "./components/EducationInfo";
 import WorkInfo from "./components/WorkInfo";
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
 
 class App extends Component {
   constructor() {
     super();
-
     this.state = {
       personalInfo: [
         "John Treso",
@@ -43,7 +44,78 @@ class App extends Component {
       ],
       toInsert: { text: "" },
     };
+    this.updateText = this.updateText.bind(this);
+    this.editText = this.editText.bind(this);
+    this.pdfFromHtml = this.pdfFromHtml.bind(this);
   }
+
+  pdfFromHtml = () => {
+    let HTML_Width = 600;
+    let HTML_Height = 999.4;
+    let top_left_margin = 0;
+    html2canvas(document.querySelector(".resume")).then(function (canvas) {
+      let imgData = canvas.toDataURL("image/jpeg", 1.0);
+      let pdf = new jsPDF({
+        orientation: "p",
+        unit: "px",
+        hotfixes: ["px_scaling"],
+        format: [HTML_Width, HTML_Height],
+      });
+      pdf.addImage(
+        imgData,
+        "PNG",
+        top_left_margin,
+        top_left_margin,
+        HTML_Width,
+        HTML_Height
+      );
+      pdf.save("Your_PDF_Name.pdf");
+    });
+  };
+
+  updateText(area, index, newText) {
+    let newArray = [...this.state[area]];
+    newArray[index] = newText;
+    if (area == "personalInfo") {
+      this.setState({
+        personalInfo: newArray,
+      });
+    }
+    if (area == "educationInfo1") {
+      this.setState({
+        educationInfo1: newArray,
+      });
+    }
+    if (area == "educationInfo2") {
+      this.setState({
+        educationInfo2: newArray,
+      });
+    }
+    if (area == "workInfo1") {
+      this.setState({
+        workInfo1: newArray,
+      });
+    }
+    if (area == "workInfo2") {
+      this.setState({
+        workInfo2: newArray,
+      });
+    }
+  }
+
+  editText(e, area, index) {
+    let text = e.target;
+    let textContent = e.target.textContent;
+    if (text["contentEditable"] == "true") {
+      text["contentEditable"] = "false";
+      text.classList.toggle("edit-mode");
+      this.updateText(area, index, textContent);
+    } else if (text["contentEditable"] != "true") {
+      text["contentEditable"] = "true";
+      text.classList.toggle("edit-mode");
+    }
+  }
+
   render() {
     const {
       toInsert,
@@ -53,19 +125,31 @@ class App extends Component {
       workInfo1,
       workInfo2,
     } = this.state;
+    const { editText, updateText, pdfFromHtml } = this;
     return (
       <div className="app">
-        <PersonalInfo toInsert={toInsert} personalInfo={personalInfo} />
-        <EducationInfo
-          toInsert={toInsert}
-          educationInfo1={educationInfo1}
-          educationInfo2={educationInfo2}
-        />
-        <WorkInfo
-          toInsert={toInsert}
-          workInfo1={workInfo1}
-          workInfo2={workInfo2}
-        />
+        <div className="resume">
+          <PersonalInfo
+            toInsert={toInsert}
+            personalInfo={personalInfo}
+            editText={editText}
+          />
+          <EducationInfo
+            toInsert={toInsert}
+            educationInfo1={educationInfo1}
+            educationInfo2={educationInfo2}
+            editText={editText}
+          />
+          <WorkInfo
+            toInsert={toInsert}
+            workInfo1={workInfo1}
+            workInfo2={workInfo2}
+            editText={editText}
+          />
+        </div>
+        <button className="screenshot" onClick={pdfFromHtml}>
+          Save PDF
+        </button>
       </div>
     );
   }
