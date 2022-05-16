@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/sebada001/react-cv-app/static/css/main.409c0a8a.css",
+    "main.js": "/sebada001/react-cv-app/static/js/main.f22766a8.js",
+    "static/js/703.21cfe134.chunk.js": "/sebada001/react-cv-app/static/js/703.21cfe134.chunk.js",
+    "static/js/657.4efa7948.chunk.js": "/sebada001/react-cv-app/static/js/657.4efa7948.chunk.js",
+    "index.html": "/sebada001/react-cv-app/index.html",
+    "main.409c0a8a.css.map": "/sebada001/react-cv-app/static/css/main.409c0a8a.css.map",
+    "main.f22766a8.js.map": "/sebada001/react-cv-app/static/js/main.f22766a8.js.map",
+    "703.21cfe134.chunk.js.map": "/sebada001/react-cv-app/static/js/703.21cfe134.chunk.js.map",
+    "657.4efa7948.chunk.js.map": "/sebada001/react-cv-app/static/js/657.4efa7948.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.409c0a8a.css",
+    "static/js/main.f22766a8.js"
+  ]
+}
