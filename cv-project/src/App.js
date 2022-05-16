@@ -1,7 +1,22 @@
 import "./App.css";
+import React, { Component } from "react";
+import PersonalInfo from "./components/PersonalInfo";
+import EducationInfo from "./components/EducationInfo";
+import WorkInfo from "./components/WorkInfo";
 
-function App() {
-  return <div className="App"></div>;
+class App extends Component {
+  constructor() {
+    super();
+  }
+  render() {
+    return (
+      <div className="app">
+        <PersonalInfo />
+        <EducationInfo />
+        <WorkInfo />
+      </div>
+    );
+  }
 }
 
 export default App;
